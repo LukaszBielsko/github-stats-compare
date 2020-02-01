@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import "./index.css"; // this wonky syntax works due to style/css loader in webpack config
 
-import Navbar from "./components/Navbar";
+import Navbar from "./containers/Navbar";
 
 class App extends Component {
   render() {

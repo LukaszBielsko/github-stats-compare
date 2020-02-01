@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 
+import LanguageBar from "../components/LanguageBar";
+
 class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      languges: ["All", "JS", "Ruby", "Java", "CSS", "Python"],
+      languages: ["All", "JS", "Ruby", "Java", "CSS", "Python"],
       currentLanguage: "All"
     };
 
@@ -17,22 +19,10 @@ class Navbar extends Component {
   }
 
   render() {
-    const { languges, currentLanguage } = this.state;
+    // const { languages, currentLanguage } = this.state;
     return (
       <ul className="navbar">
-        {languges.map(language => (
-          <li>
-            <button
-              // className="nav-btn"
-              className={
-                language === currentLanguage ? "nav-btn active" : "nav-btn"
-              }
-              onClick={() => this.updateLanguage(language)}
-            >
-              {language}
-            </button>
-          </li>
-        ))}
+        <LanguageBar {...this.state} updateLanguage={this.updateLanguage} />
       </ul>
     );
   }
