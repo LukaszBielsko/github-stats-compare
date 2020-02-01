@@ -1,19 +1,23 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: './index.js',
-  outputh: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'index_bundle.js'
+  entry: "./index.js",
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "index_bundle.js"
   },
-  {
-    module: {
-      rules: [
-        { test: /\.(js)$/, use: 'babel-loader'},
-        { test: /\.(css)$/, use: ['style-loader','style-loader'] },
-         
-      ]
-    }
+  module: {
+    rules: [
+      { test: /\.(js)$/, use: "babel-loader" },
+      { test: /\.(css)$/, use: ["style-loader", "css-loader"] }
+    ]
   },
-  mode: 'development'
+  mode: "development",
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "index.html"
+    }),
+    "@babel/plugin-proposal-class-properties"
+  ]
 };
