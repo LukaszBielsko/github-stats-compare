@@ -1,29 +1,44 @@
 import React, { Component } from "react";
 
-import LanguageBar from "../components/LanguageBar";
+import LanguageNav from "../components/LanguageNav";
+import fetchRepos from "../utils/api";
 
 class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      languages: ["All", "JS", "Ruby", "Java", "CSS", "Python"],
-      currentLanguage: "All"
+      languages: ["All", "JS", "Ruby", "Java", "Go", "Python"],
+      currentLanguage: "All",
+      repos: null
     };
 
     this.updateLanguage = this.updateLanguage.bind(this);
   }
 
+  componentDidMount() {
+    // fetch repos for all languages
+    fetchRepos(this.state.currentLanguage).then(repos => {
+      this.setState({ repos });
+    });
+  }
+
   updateLanguage(currentLanguage) {
-    this.setState({ currentLanguage });
-    // this.state.currentLanguage = "check"; it will mutate the state, but it will not cause rerender
+    fetchRepos(currentLanguage).then(repos => {
+      this.setState({ repos, currentLanguage });
+    });
+    // this.state.currentLanguage = "state changed";
+    // it will mutate the state, but it will not cause rerender
   }
 
   render() {
-    // const { languages, currentLanguage } = this.state;
+    const { repos } = this.state;
     return (
-      <ul className="navbar">
-        <LanguageBar {...this.state} updateLanguage={this.updateLanguage} />
-      </ul>
+      <>
+        <ul className="navbar">
+          <LanguageNav {...this.state} updateLanguage={this.updateLanguage} />
+        </ul>
+        {repos && <pre>{JSON.stringify(repos, null, 2)}</pre>}
+      </>
     );
   }
 }
