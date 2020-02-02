@@ -16,23 +16,29 @@ class Navbar extends Component {
   }
 
   componentDidMount() {
-    // fetch repos for all languages
-    fetchRepos(this.state.currentLanguage).then(repos => {
-      this.setState(state => {
-        const updatedRepos = { ...state.repos };
-        updatedRepos[this.state.currentLanguage] = repos;
-        return { repos: updatedRepos };
-      });
-    });
+    this.updateLanguage(this.state.currentLanguage);
   }
 
   updateLanguage(currentLanguage) {
+    this.setState({
+      currentLanguage,
+      error: null
+    });
     if (!this.state.repos[currentLanguage]) {
-      fetchRepos(currentLanguage).then(repos => {
-        this.setState(state => {
-          const updatedRepos = { ...state.repos }; // spread and create new object, not a reference to existing one
-          updatedRepos[currentLanguage] = repos;
-          return { repos: updatedRepos, currentLanguage };
+      fetchRepos(currentLanguage).then(languageRepos => {
+        this.setState(({ repos }) => {
+          // spread and create new object, not a reference to existing one
+          // const updatedRepos = { ...state.repos };
+          // updatedRepos[currentLanguage] = repos;
+          // return { repos: updatedRepos, currentLanguage };
+          // much more elegant way of doing above is siting below
+          return {
+            repos: {
+              ...repos,
+              [currentLanguage]: languageRepos,
+              currentLanguage
+            }
+          };
         });
       });
     } else {
@@ -43,14 +49,19 @@ class Navbar extends Component {
     // it will mutate the state, but it will not cause rerender
   }
 
+  isLoading() {
+    return !this.state.repos[this.state.currentLanguage];
+  }
+
   render() {
-    const { repos } = this.state;
+    const { repos, currentLanguage } = this.state;
     return (
       <>
         <ul className="navbar">
           <LanguageNav {...this.state} updateLanguage={this.updateLanguage} />
         </ul>
-        {repos && <pre>{JSON.stringify(repos, null, 2)}</pre>}
+        {this.isLoading() && <p>... loading ...</p>}
+        {repos && <pre>{JSON.stringify(repos[currentLanguage], null, 2)}</pre>}
       </>
     );
   }

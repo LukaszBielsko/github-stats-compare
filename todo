@@ -2,3 +2,17 @@ caching
   - repos as object in constructor
   - in updateLanguage set repos.currentLanguage to data fetched
   - after user clicked again on language that was checked before, check if data is in the state 
+
+  didMount called
+  fetchRepos
+  currentLanguage = all
+  return repos: all 
+  state is set
+  re render component
+
+  click on js
+  updateLanguage 
+  set state to js repos
+  set state to js as currentLanguage
+
+  
