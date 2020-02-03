@@ -25,9 +25,10 @@ class PlayerInput extends Component {
 
   render() {
     const { isBtnDisabled, username } = this.state;
+    const { label } = this.props;
     return (
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor="username">username</label>
+        <label htmlFor={label}>{label}</label>
         <input
           type="text"
           onChange={this.handleInput}

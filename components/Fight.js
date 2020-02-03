@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PlayerInput from "./PlayerInput";
+import PlayerDisplay from "./PlayerDisplay";
 
 class Fight extends Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class Fight extends Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.resetPlayer = this.resetPlayer.bind(this);
   }
 
   // funny bussiness here, at least for me
@@ -21,18 +23,38 @@ class Fight extends Component {
     });
   }
 
+  resetPlayer(player) {
+    this.setState({
+      [player]: null
+    });
+  }
+
   render() {
     const { playerOne, playerTwo } = this.state;
     return (
       <>
-        {!playerOne && (
+        {!playerOne ? (
           <PlayerInput
             onSubmit={username => this.handleSubmit("playerOne", username)}
+            label="playerOne"
+          />
+        ) : (
+          <PlayerDisplay
+            player={playerOne}
+            label="playerOne"
+            onReset={player => this.resetPlayer(player)}
           />
         )}
-        {!playerTwo && (
+        {!playerTwo ? (
           <PlayerInput
             onSubmit={username => this.handleSubmit("playerTwo", username)}
+            label="playerTwo"
+          />
+        ) : (
+          <PlayerDisplay
+            player={playerTwo}
+            label="playerTwo"
+            onReset={player => this.resetPlayer(player)}
           />
         )}
       </>
