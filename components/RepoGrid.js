@@ -7,7 +7,6 @@ import {
 } from "react-icons/fa";
 
 const RepoGrid = ({ repos }) => {
-  console.log(repos);
   return (
     <ul className="grid space-around">
       {repos.map((repo, index) => {

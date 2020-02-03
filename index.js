@@ -3,12 +3,14 @@ import ReactDOM from "react-dom";
 import "./index.css"; // this wonky syntax works due to style/css loader in webpack config
 
 import Navbar from "./containers/Navbar";
+import Fight from "./components/Fight";
 
 class App extends Component {
   render() {
     // JS land :)
     return (
       <div className="container">
+        <Fight />
         <Navbar />
       </div>
     );
