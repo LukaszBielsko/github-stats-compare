@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import LanguageNav from "../components/LanguageNav";
 import RepoGrid from "../components/RepoGrid";
 import { fetchRepos } from "../utils/api";
+import Loader from "../components/Loader";
 
 class Navbar extends Component {
   constructor(props) {
@@ -61,8 +62,7 @@ class Navbar extends Component {
         <ul className="navbar">
           <LanguageNav {...this.state} updateLanguage={this.updateLanguage} />
         </ul>
-        {this.isLoading() && <p>... loading ...</p>}
-        {/* {repos && <pre>{JSON.stringify(repos[currentLanguage], null, 2)}</pre>} */}
+        {this.isLoading() && <Loader />}
         {repos[currentLanguage] && <RepoGrid repos={repos[currentLanguage]} />}
       </>
     );

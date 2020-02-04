@@ -15,6 +15,7 @@ class Fight extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.resetPlayer = this.resetPlayer.bind(this);
+    this.resetFight = this.resetFight.bind(this);
   }
 
   // funny bussiness here, at least for me
@@ -32,11 +33,24 @@ class Fight extends Component {
     });
   }
 
+  resetFight() {
+    this.setState({
+      playerOne: null,
+      playerTwo: null,
+      battle: false
+    });
+  }
+
   render() {
     const { battle, playerOne, playerTwo } = this.state;
 
     if (battle) {
-      return <FightResults players={[playerOne, playerTwo]} />;
+      return (
+        <FightResults
+          players={[playerOne, playerTwo]}
+          resetFight={this.resetFight}
+        />
+      );
     }
 
     return (

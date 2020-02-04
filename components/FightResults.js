@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import { battle } from "../utils/api";
 import Card from "../components/Card";
+import Loader from "./Loader";
 
 class FightResults extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class FightResults extends Component {
 
   render() {
     const { winner, winnerScore, looser, looserScore } = this.state;
+    const { resetFight } = this.props;
     return (
       <div className="winner">
         {winner ? (
@@ -57,9 +59,10 @@ class FightResults extends Component {
             >
               <h2>Score: {looser.score}</h2>
             </Card>
+            <button onClick={resetFight}> RESET </button>
           </>
         ) : (
-          <p>loading</p>
+          <Loader />
         )}
       </div>
     );

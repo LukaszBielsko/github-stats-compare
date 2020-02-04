@@ -23,6 +23,9 @@ reusing card component
     profile
       some common things here
 
+reset button
+  show only when battle finished
+  clear 
 
 
   
