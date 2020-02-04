@@ -25,7 +25,11 @@ reusing card component
 
 reset button
   show only when battle finished
-  clear 
+  clear state in parent component
 
-
+tooltip
+  show tooltip onMouseOver
+  hide tooltip onMouseOut
+  render tooltpi with text (passed as prop)
+  return children 
   

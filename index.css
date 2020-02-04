@@ -118,6 +118,7 @@ li {
 .card-list {
   margin: 20px 0;
   font-size: 20px;
+  border-radius: 5px;
 }
 
 .card-list li {
@@ -152,4 +153,37 @@ li {
 
 .repo img {
   margin-bottom: 8px;
+}
+
+.tooltip-container {
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  top: -29px;
+  font-size: 1.1rem;
+  background-color: hsla(0, 0%, 20%, 0.9);
+  padding: 5px;
+  border-radius: 5px;
+  color: navajowhite;
+}
+
+.results {
+  display: flex;
+  padding: 10px;
+  justify-content: space-around;
+}
+
+.reset {
+  display: block;
+  margin: auto;
+  text-align: center;
+  font-size: 1.5rem;
+  color: ghostwhite;
+  background: black;
+  padding-left: 14px;
+  letter-spacing: 11px;
+  border: 2px solid goldenrod;
+  border-radius: 6px;
 }

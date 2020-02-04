@@ -40,26 +40,31 @@ class FightResults extends Component {
     const { winner, winnerScore, looser, looserScore } = this.state;
     const { resetFight } = this.props;
     return (
-      <div className="winner">
+      <div>
         {winner ? (
           <>
-            <Card
-              avatar_url={winner.profile.avatar_url}
-              login={winner.profile.login}
-              html_url={winner.profile.html_url}
-              header="WINNER"
-            >
-              <h2>Score: {winner.score}</h2>
-            </Card>
-            <Card
-              avatar_url={looser.profile.avatar_url}
-              login={looser.profile.login}
-              html_url={looser.profile.html_url}
-              header="LOOSER"
-            >
-              <h2>Score: {looser.score}</h2>
-            </Card>
-            <button onClick={resetFight}> RESET </button>
+            <div className="results">
+              <Card
+                avatar_url={winner.profile.avatar_url}
+                login={winner.profile.login}
+                html_url={winner.profile.html_url}
+                header="WINNER"
+              >
+                <h2>Score: {winner.score}</h2>
+              </Card>
+              <Card
+                avatar_url={looser.profile.avatar_url}
+                login={looser.profile.login}
+                html_url={looser.profile.html_url}
+                header="LOOSER"
+              >
+                <h2>Score: {looser.score}</h2>
+              </Card>
+            </div>
+            <button onClick={resetFight} className="reset">
+              {" "}
+              RESET{" "}
+            </button>
           </>
         ) : (
           <Loader />

@@ -5,7 +5,9 @@ import {
   FaCodeBranch,
   FaExclamationTriangle
 } from "react-icons/fa";
+
 import Card from "./Card";
+import Tooltip from "./Tooltip";
 
 const RepoGrid = ({ repos }) => {
   return (
@@ -30,18 +32,27 @@ const RepoGrid = ({ repos }) => {
                 login={login}
                 html_url={html_url}
               >
-                <li>
-                  <FaStar color="rgb(255, 215, 0)" size={22} />
-                  {stargazers_count.toLocaleString()} stars
-                </li>
-                <li>
-                  <FaCodeBranch color="rgb(129, 195, 245)" size={22} />
-                  {forks.toLocaleString()} forks
-                </li>
-                <li>
-                  <FaExclamationTriangle color="rgb(241, 138, 147)" size={22} />
-                  {open_issues.toLocaleString()} open
-                </li>
+                <Tooltip text="Stars count">
+                  <li>
+                    <FaStar color="rgb(255, 215, 0)" size={22} />
+                    {stargazers_count.toLocaleString()} stars
+                  </li>
+                </Tooltip>
+                <Tooltip text="Forks">
+                  <li>
+                    <FaCodeBranch color="rgb(129, 195, 245)" size={22} />
+                    {forks.toLocaleString()} forks
+                  </li>
+                </Tooltip>
+                <Tooltip text="Open issues">
+                  <li>
+                    <FaExclamationTriangle
+                      color="rgb(241, 138, 147)"
+                      size={22}
+                    />
+                    {open_issues.toLocaleString()} open
+                  </li>
+                </Tooltip>
               </Card>
             </ul>
           </li>
