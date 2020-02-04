@@ -15,4 +15,14 @@ caching
   set state to js repos
   set state to js as currentLanguage
 
+reusing card component
+  im passing props not whole object
+  find common things to display
+  what is the shape of player
+    score 
+    profile
+      some common things here
+
+
+
   

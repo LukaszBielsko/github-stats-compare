@@ -99,6 +99,12 @@ li {
   display: block;
 }
 
+.avatar-small {
+  width: 150px;
+  height: 150px;
+  border-radius: 3px;
+}
+
 .center-text {
   text-align: center;
 }

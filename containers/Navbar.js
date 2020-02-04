@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import LanguageNav from "../components/LanguageNav";
 import RepoGrid from "../components/RepoGrid";
-import fetchRepos from "../utils/api";
+import { fetchRepos } from "../utils/api";
 
 class Navbar extends Component {
   constructor(props) {

@@ -1,13 +1,16 @@
 import React, { Component } from "react";
+
 import PlayerInput from "./PlayerInput";
 import PlayerDisplay from "./PlayerDisplay";
+import FightResults from "./FightResults";
 
 class Fight extends Component {
   constructor(props) {
     super(props);
     this.state = {
       playerOne: null,
-      playerTwo: null
+      playerTwo: null,
+      battle: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,7 +33,12 @@ class Fight extends Component {
   }
 
   render() {
-    const { playerOne, playerTwo } = this.state;
+    const { battle, playerOne, playerTwo } = this.state;
+
+    if (battle) {
+      return <FightResults players={[playerOne, playerTwo]} />;
+    }
+
     return (
       <>
         {!playerOne ? (
@@ -56,6 +64,9 @@ class Fight extends Component {
             label="playerTwo"
             onReset={player => this.resetPlayer(player)}
           />
+        )}
+        {playerOne && playerTwo && (
+          <button onClick={() => this.setState({ battle: true })}>FIGHT</button>
         )}
       </>
     );
