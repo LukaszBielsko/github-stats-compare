@@ -5,7 +5,9 @@ const LanguageList = ({ languages, currentLanguage, updateLanguage }) => {
   return languages.map(language => (
     <li key={language}>
       <button
-        className={language === currentLanguage ? "nav-btn active" : "nav-btn"}
+        className={
+          language === currentLanguage ? "nav-btn activeLanguage" : "nav-btn"
+        }
         onClick={() => updateLanguage(language)}
       >
         {language}

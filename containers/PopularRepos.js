@@ -5,7 +5,7 @@ import RepoGrid from "../components/RepoGrid";
 import { fetchRepos } from "../utils/api";
 import Loader from "../components/Loader";
 
-class LanguageBar extends Component {
+class PopularRepos extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -68,4 +68,4 @@ class LanguageBar extends Component {
   }
 }
 
-export default LanguageBar;
+export default PopularRepos;

@@ -8,6 +8,10 @@ li {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 .container {
   width: 100;
   padding: 50px;
@@ -28,7 +32,7 @@ li {
   letter-spacing: 2px;
 }
 
-.active {
+.activeLanguage {
   background-color: turquoise;
 }
 
@@ -188,4 +192,15 @@ li {
 
 .purple {
   background-color: purple;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+.navbar li {
+  margin: 0 20px;
+}
+.navbar ul {
+  display: flex;
 }

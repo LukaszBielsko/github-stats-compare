@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import "./index.css"; // this wonky syntax works due to style/css loader in webpack config
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import LanguageBar from "./containers/LanguageBar";
 import Fight from "./components/Fight";
 import { ThemeProvider } from "./contexts/theme";
 import Navbar from "./containers/Navbar";
+import PopularRepos from "./containers/PopularRepos";
 
 class App extends Component {
   constructor(props) {
@@ -26,13 +27,15 @@ class App extends Component {
     const { theme } = this.state;
     return (
       // babel land :)
-      <ThemeProvider value={this.state}>
-        <div className={`container ${theme}`}>
-          <Fight />
-          <Navbar />
-          <LanguageBar />
-        </div>
-      </ThemeProvider>
+      <Router>
+        <ThemeProvider value={this.state}>
+          <div className={`container ${theme}`}>
+            <Navbar />
+            <Route path="/" exact component={PopularRepos} />
+            <Route path="/fight" exact component={Fight} />
+          </div>
+        </ThemeProvider>
+      </Router>
     );
   }
 }
