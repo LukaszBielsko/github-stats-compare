@@ -9,11 +9,12 @@ li {
 }
 
 .container {
-  width: 80%;
+  width: 100;
+  padding: 50px;
   margin: auto;
 }
 
-.navbar {
+.language-bar {
   display: flex;
   justify-content: space-around;
 }
@@ -50,12 +51,6 @@ ul {
 
 li {
   list-style-type: none;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 50px;
 }
 
 .flex-center {
@@ -140,6 +135,9 @@ li {
   background: rgba(0, 0, 0, 0.08);
   border-radius: 3px;
 }
+.bg-purple {
+  background-color: seagreen;
+}
 
 .repo {
   margin: 10px 0;
@@ -186,4 +184,8 @@ li {
   letter-spacing: 11px;
   border: 2px solid goldenrod;
   border-radius: 6px;
+}
+
+.purple {
+  background-color: purple;
 }

@@ -11,7 +11,6 @@ class Loader extends Component {
   componentDidMount() {
     const { speed } = this.props;
     this.interval = window.setInterval(() => {
-      console.log("interval");
       this.state.content === "...LOADING..."
         ? this.setState({ content: "...LOAD" })
         : this.setState(({ content }) => ({ content: content + "ING..." }));

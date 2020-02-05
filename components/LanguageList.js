@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const LanguageNav = ({ languages, currentLanguage, updateLanguage }) => {
+const LanguageList = ({ languages, currentLanguage, updateLanguage }) => {
   return languages.map(language => (
     <li key={language}>
       <button
@@ -14,10 +14,10 @@ const LanguageNav = ({ languages, currentLanguage, updateLanguage }) => {
   ));
 };
 
-LanguageNav.propTypes = {
+LanguageList.propTypes = {
   languages: PropTypes.arrayOf(PropTypes.string).isRequired,
   currentLanguage: PropTypes.string.isRequired,
   updateLanguage: PropTypes.func.isRequired
 };
 
-export default LanguageNav;
+export default LanguageList;
